@@ -1,0 +1,11 @@
+[Unit]
+Description=Packet Loss Tracker
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /INSTALL_PATH/track_packet_loss.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
