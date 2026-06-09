@@ -66,3 +66,21 @@ The service starts on login and restarts automatically if it crashes.
 | Restart | `systemctl --user restart packet-tracker` |
 | Status  | `systemctl --user status packet-tracker` |
 | Logs    | `journalctl --user -u packet-tracker -f` |
+
+## Frontends
+
+### Starship prompt
+
+Displays the current packet loss percentage in your shell prompt. Merge the config into your `~/.config/starship.toml`:
+
+```bash
+cat frontends/starship/packet_loss.toml >> ~/.config/starship.toml
+```
+
+Then add `custom.packet_loss` to your prompt `format` line:
+
+```toml
+format = "... $custom.packet_loss..."
+```
+
+Shows the current packet loss percentage (e.g. `20%`). Hidden when loss is 0% or the daemon isn't running.

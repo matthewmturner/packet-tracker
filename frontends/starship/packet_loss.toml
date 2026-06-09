@@ -1,0 +1,15 @@
+[custom.packet_loss]
+description = "Current packet loss percentage"
+command = """
+file="${XDG_DATA_HOME:-$HOME/.local/share}/packet-tracker/packet_loss.txt"
+[ "$(uname)" = "Darwin" ] && file="$HOME/Library/Application Support/packet-tracker/packet_loss.txt"
+[ -f "$file" ] && cat "$file" || echo "?"
+"""
+when = """
+file="${XDG_DATA_HOME:-$HOME/.local/share}/packet-tracker/packet_loss.txt"
+[ "$(uname)" = "Darwin" ] && file="$HOME/Library/Application Support/packet-tracker/packet_loss.txt"
+[ -f "$file" ] && val=$(cat "$file") && [ "$val" != "?" ] && [ "$val" -gt 0 ]
+"""
+shell = ["bash", "--norc", "--noprofile"]
+format = "[$output]($style) "
+style = "bold red"
