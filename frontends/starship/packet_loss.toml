@@ -8,8 +8,8 @@ file="${XDG_DATA_HOME:-$HOME/.local/share}/packet-tracker/packet_loss.txt"
 when = """
 file="${XDG_DATA_HOME:-$HOME/.local/share}/packet-tracker/packet_loss.txt"
 [ "$(uname)" = "Darwin" ] && file="$HOME/Library/Application Support/packet-tracker/packet_loss.txt"
-[ -f "$file" ] && val=$(cat "$file") && [ "$val" != "?" ] && [ "$val" -gt 0 ]
+[ -f "$file" ] && awk 'NR==1{exit ($1+0 > 0 ? 0 : 1)}' "$file"
 """
 shell = ["bash", "--norc", "--noprofile"]
-format = "[$output]($style) "
+format = "ploss:[$output]($style) "
 style = "bold red"
