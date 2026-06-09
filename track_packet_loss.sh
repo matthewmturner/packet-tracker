@@ -4,8 +4,14 @@
 HOST="${1:-8.8.8.8}"
 PING_COUNT=20
 INTERVAL=5
-OUTPUT_FILE="$(dirname "$0")/packet_loss.txt"
-LOG_FILE="$(dirname "$0")/packet_loss.log"
+if [[ "$(uname)" == "Darwin" ]]; then
+    DATA_DIR="$HOME/Library/Application Support/packet-tracker"
+else
+    DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/packet-tracker"
+fi
+mkdir -p "$DATA_DIR"
+OUTPUT_FILE="$DATA_DIR/packet_loss.txt"
+LOG_FILE="$DATA_DIR/packet_loss.log"
 
 while true; do
     # ping -c sends COUNT packets; parse the "X% packet loss" from summary line

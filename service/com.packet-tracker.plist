@@ -7,15 +7,15 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/INSTALL_PATH/track_packet_loss.sh</string>
+        <string>/Users/matth/OpenSource/packet-tracker/track_packet_loss.sh</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>/INSTALL_PATH/daemon.log</string>
+    <string>/Users/matth/Library/Application Support/packet-tracker/daemon.log</string>
     <key>StandardErrorPath</key>
-    <string>/INSTALL_PATH/daemon.log</string>
+    <string>/Users/matth/Library/Application Support/packet-tracker/daemon.log</string>
 </dict>
 </plist>
